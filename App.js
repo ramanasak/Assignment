@@ -5,7 +5,7 @@ import 'react-native-gesture-handler';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import StockDisplayScreen from "./screens/StockDisplayScreen";
-
+import DateSelectionScreen from "./screens/DateSelectionScreen";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +21,7 @@ export default class App extends React.Component {
         <Text>Date Picker </Text>
         <Button
           title="Date"
-          onPress={() => this.props.navigation.navigate("Display")}
+          onPress={() => this.props.navigation.navigate("StocksDisplay")}
         />
       </View>
     );
@@ -38,11 +38,13 @@ class Display extends React.Component {
 }
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: Welcome,
+    screen: DateSelectionScreen,
   },
-  Display: {
+  Stocks: {
     screen: StockDisplayScreen,
-  },
-});
+  }
+}
+);
 
 const AppContainer = createAppContainer(AppNavigator); //use main
+

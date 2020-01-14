@@ -12,10 +12,8 @@ export default class MyDatePicker extends Component {
     super(props)
     //set value in state for initial date
     this.state = {
-        //fromDate:"09-10-2002",
-        //toDate:"16-05-2018"
-        fromDate:"01-09-2002",
-        toDate:"09-10-2002",
+        fromDate:"01-01-2000",
+        toDate:"01-01-2003",
         
   }
 }

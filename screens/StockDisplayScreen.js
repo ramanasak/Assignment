@@ -55,22 +55,84 @@ export default class StockDisplayScreen extends React.Component {
         }
         //moment(item.date).format("DD-MM-YYYY") > fromDate && 
         //(moment(item.date).format("DD-MM-YYYY") <= toDate ) && 
-       if((moment(item.date).format("DD-MM-YYYY") >= fromDate)){       
+        //let date1 = moment(fromDate).format("DD-MM-YYYY");
+        //let date1 = moment(item.date).format("DD/MM/YYYY");
+        //let date2 = moment(item.date).format("DD/MM/YYYY") ;
+
+
+        //var date1 =new Date(fromDate);
+         //var date2 =new Date(toDate);
+//moment("20111031", "YYYYMMDD").fromNow();
+       // console.log("fromDate = ",fromDate);
+        ////console.log("date2 = ",date2);
+        //console.log("date2 = ",date2);
+
+
+        console.log("sssss = ",moment(fromDate, "YYYYMMDD").fromNow());
+
+        console.log("date\ f  = ",moment(fromDate).subtract(10, 'days').calendar());
+
+
+        // var firstValue = fromDate.split('-');
+        // var secondValue = toDate.split('-');
+        
+        //  var firstDate=new Date();
+        //  firstDate.setFullYear(firstValue[0],(firstValue[1] - 1 ),firstValue[2]);
+        
+        //  var secondDate=new Date();
+        //  secondDate.setFullYear(secondValue[0],(secondValue[1] - 1 ),secondValue[2]);     
+        
+        //  console.log("firstValue = ",firstValue);
+        //  console.log("secondDate = ",secondDate);
+        
+         const fromDate2 = moment(fromDate,"DD/MM/YYYY");
+         const toDate2 = moment(toDate,"DD/MM/YYYY");
+         const momentC = moment(item.date).format("DD/MM/YYYY");
+         const date2 = moment(momentC,"DD/MM/YYYY");
+         console.log("fromDate2 = ",fromDate2);
+         console.log("toDate2 = ",toDate2);
+         //console.log("momentC = ",momentC);
+         console.log("date2 = ",date2);
+
+
+
+        //   if (firstDate > secondDate)
+        //   {
+        //    alert("First Date  is greater than Second Date");
+        //   }
+        //  else
+        //   {
+        //     alert("Second Date  is greater than First Date");
+        //   }
+
+        
+       if(date2 >= fromDate2 && date2 <= toDate2){       
          return (
-             //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT) 
-            <TouchableOpacity style={styles.list} >                 
+             //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT) >  {date2} 
+            <TouchableOpacity style={styles.list} >  
                 <ContentComponent {...stock}  />
             </TouchableOpacity>
          )    
         }
-        else if((moment(item.date).format("DD-MM-YYYY") <= toDate)){       
-            return (
-                //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT)     
-               <TouchableOpacity style={styles.list} >                 
-                   <ContentComponent {...stock}  />
-               </TouchableOpacity>   
-           )    
-        }
+
+
+
+    //    if((moment(item.date).format("DD-MM-YYYY") >= fromDate)){       
+    //      return (
+    //          //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT) 
+    //         <TouchableOpacity style={styles.list} >                 
+    //             {/* <ContentComponent {...stock}  /> */}
+    //         </TouchableOpacity>
+    //      )    
+    //     }
+    //     else if((moment(item.date).format("DD-MM-YYYY") <= toDate)){       
+    //         return (
+    //             //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT)     
+    //            <TouchableOpacity style={styles.list} >                 
+    //                {/* <ContentComponent {...stock}  /> */}
+    //            </TouchableOpacity>   
+    //        )    
+    //     }
 
     }
 

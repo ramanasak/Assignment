@@ -13,7 +13,7 @@ export default class MyDatePicker extends Component {
     //set value in state for initial date
     this.state = {
         fromDate:"01-01-2000",
-        toDate:"01-01-2003",
+        toDate:"01-01-2021",
         
   }
 }
@@ -111,8 +111,8 @@ export default class MyDatePicker extends Component {
             </Text>
             </View>
           </TouchableHighlight>
-
       </View>
+
     )
   }
 }

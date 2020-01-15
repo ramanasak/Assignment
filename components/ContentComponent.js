@@ -28,7 +28,6 @@ import Icon from 'react-native-vector-icons/Feather';
 export default class ContentComponent extends React.Component {
 
     render() {
-
         // const { navigation } = this.props;
         // const fromDate=navigation.getParam('fromDate', 'NO-DATE');
         // const toDate=navigation.getParam('toDate', 'NO-DATE');
@@ -36,15 +35,15 @@ export default class ContentComponent extends React.Component {
         // const high=navigation.getParam('toDate', 'NO-DATE');
         // const low=navigation.getParam('toDate', 'NO-DATE');
         // const close=navigation.getParam('toDate', 'NO-DATE');
-
         return (
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor:'whte' }}>
              
             <View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'white', justifyContent: 'center' }}>
                     <View style={{
                         flex: 2, justifyContent: 'center', marginLeft: 15, backgroundColor: 'white',
                         borderColor: 'black', borderWidth: 1, borderRadius: 10, borderColor: 'white'
                     }}>
+                    
                         <Text
                             style={{
                                 fontSize: 18, color: 'black', marginBottom: 1, marginTop: 1,
@@ -61,7 +60,7 @@ export default class ContentComponent extends React.Component {
                         </Text>
                     </View>
                     <View style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white' }}>
-                        <Text style={{ fontSize: 18, color: '#3f51b5', marginBottom: 1, marginTop: 1, justifyContent: 'center' }}>
+                        <Text style={{ fontSize: 18, color: '#3f51b5',alignItems:'center', marginBottom: 1, marginTop: 1, justifyContent: 'center' }}>
                             <Icon name={this.props.close > this.props.open ? 'arrow-up-right' : 'arrow-down-right'} size={20} color={this.props.close > this.props.open  ? '#1DA664' : '#DE5347'}
                                  />
                                  {/* onPress={() => this.props.navigation.navigate('NoticesDisplayPdfScreen', {
@@ -71,6 +70,7 @@ export default class ContentComponent extends React.Component {
                     </View>
                 </View>        
           </View>
+       
         );
       }
 

@@ -8,8 +8,7 @@ import {
     FlatList,
     ActivityIndicator,
     TouchableOpacity,
-    Picker
-   
+    Picker 
 } from 'react-native';
 import {   
     Colors,  
@@ -18,7 +17,7 @@ import moment from "moment";
 import Icon from 'react-native-vector-icons/Feather';
 
 import ContentComponent from "./../components/ContentComponent";
-//import ContentComponent from "./ContentComponent";
+
 
 
 export default class StockDisplayScreen extends React.Component {
@@ -26,15 +25,12 @@ export default class StockDisplayScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,
-            a:true,
-            user: '',                    
+            isLoading: true,              
         };
     }//constructor
    updateList = (sortBy) => {
 
       this.setState({ sortBy: sortBy })
-      console.log("sortBy===== ",sortBy);
 
      var sorted = this.state.dataSource.slice(0);
 
@@ -63,19 +59,19 @@ export default class StockDisplayScreen extends React.Component {
                 return a.high - b.high;
             });          
         }
-            this.setState({ 
-                dataSource: sorted
-            })  
-        console.log('by date dataSource:');
-        console.log(this.state.dataSource);
-    }//uodate list 
+
+    this.setState({ 
+        dataSource: sorted
+    })  
+
+    }//update list 
 
     renderSeparator = () => {
         return (          
             <View
                 style={{
-                    borderBottomColor: "grey",
-                    borderBottomWidth: 0.5,
+                    //borderBottomColor: "grey",
+                    //borderBottomWidth: 0.5,
                     marginBottom: 5,
                     marginTop: 5
                 }}
@@ -104,7 +100,8 @@ export default class StockDisplayScreen extends React.Component {
        if(date2 >= fromDate2 && date2 <= toDate2){       
          return (
              //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT) >  {date2} 
-            <TouchableOpacity style={styles.list} >  
+             //style={styles.list} 
+            <TouchableOpacity>  
                 <ContentComponent {...stock}  />
             </TouchableOpacity>
          )    
@@ -144,27 +141,61 @@ export default class StockDisplayScreen extends React.Component {
                     </View>
                 </View>
             )
-        }
-    
+        }   
 
         return (
-            <ScrollView style={{ color: "white", fontSize: 18, textAlign: 'center',backgroundColor: Colors.lighter }}>
+            // backgroundColor: Colors.lighter 
+            <ScrollView style={{ color: "white", fontSize: 18, textAlign: 'center',backgroundColor:'#3399ff' }}>
                 <StatusBar backgroundColor="#fff" barStyle="dark-content" />
 
                 <View style={{ marginTop: 10 }}>
-                    <Text style={{ color: "green", fontSize: 20, textAlign: 'center', marginBottom: 15, marginTop: 10 }}>
+                    <Text style={{ color: "white", fontSize: 20, textAlign: 'center', marginBottom: 15, marginTop: 10 }}>
                         <Icon name="bar-chart-2" size={20} />  Stock's Display</Text>
                 </View>
-                <View style={{ alignItems:'flex-end' , backgroundColor:'#bad5c3'  }}>
+                <View style={{ alignItems:'flex-end' , backgroundColor:'#3399ff'  }}>
                
-            <Picker style={{height: 50, width: 200}} selectedValue = {this.state.sortBy} onValueChange = {this.updateList}>
-               <Picker.Item label = "Sort by Highest" value = "High" />
-               <Picker.Item label = "Sort by Lowest" value = "Low" />
-               <Picker.Item label = "Sort by Open" value = "Open" />
-               <Picker.Item label = "Sort by Close" value = "Close" />
-            </Picker>
+                    <Picker style={{height: 50, width: 200 ,color:'white'}} selectedValue = {this.state.sortBy} onValueChange = {this.updateList}>
+                    <Picker.Item label = "Sort by Highest" value = "High" />
+                    <Picker.Item label = "Sort by Lowest" value = "Low" />
+                    <Picker.Item label = "Sort by Open" value = "Open" />
+                    <Picker.Item label = "Sort by Close" value = "Close" />
+                    </Picker>
                 </View>
 
+                <View style={{ backgroundColor:'white' ,flex:7 , flexDirection:'row' }}>
+                        <View style={styles.dateColumn}>
+                        {/* // color: "#3399ff" ,borderwidth:1,borderColor:'grey'*/}
+                            <Text style={{color: "white", fontSize: 16, textAlign: 'center',
+                            marginBottom: 5, marginTop: 5 }}>
+                            Date</Text>
+                        </View>
+                        <View style={styles.dataColumn}>
+                            <Text style={{ color: "white", fontSize: 16, textAlign: 'center',
+                            marginBottom: 5, marginTop: 5 }}>
+                            Open</Text>
+                        </View>
+                        <View style={styles.dataColumn}>
+                            <Text style={{ color: "white", fontSize: 16, textAlign: 'center',
+                            marginBottom: 5, marginTop: 5 }}>
+                            Close</Text>
+                        </View>
+                        <View style={styles.dataColumn}>
+                            <Text style={{ color: "white", fontSize: 16, textAlign: 'center',
+                            marginBottom: 5, marginTop: 5 }}>
+                            High</Text>
+                        </View>
+                        <View style={styles.dataColumn}>
+                            <Text style={{ color: "white", fontSize: 16, textAlign: 'center',
+                            marginBottom: 5, marginTop: 5 }}>
+                            Low</Text>
+                        </View>
+                        <View style={styles.dataColumn}>
+                            <Text style={{ color: "white", fontSize: 16, textAlign: 'center',
+                            marginBottom: 5, marginTop: 5 }}>
+                            <Icon name="activity" size={18} /> </Text>
+                        </View>
+              
+                </View>
                 <View>
                     <FlatList
                         data={this.state.dataSource}
@@ -203,6 +234,22 @@ const styles = StyleSheet.create({
         paddingVertical: 0,
         marginVertical: 0,
         borderRadius: 10
+    },
+    dateColumn:{
+    backgroundColor:'#3399ff',
+    flex:2,
+    borderRightColor:'white',
+    borderRightWidth:0.5,
+    //borderLeftColor:'grey',
+    //borderLeftWidth:0.5
+    },
+    dataColumn:{
+    backgroundColor:'#3399ff',
+    flex:1,
+    borderRightColor:'white',
+    borderRightWidth:0.5,
+    //borderLeftColor:'grey',
+    //borderLeftWidth:0.5
     }
   
 });

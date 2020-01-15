@@ -38,7 +38,7 @@ class Display extends React.Component {
 }
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: DateSelectionScreen,
+    screen: DateSelectionScreen,    
   },
   Stocks: {
     screen: StockDisplayScreen,

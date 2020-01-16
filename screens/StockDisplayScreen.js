@@ -8,14 +8,16 @@ import {
     FlatList,
     ActivityIndicator,
     TouchableOpacity,
-    Picker 
+    Picker,
+    Button,
+    TextInput,Alert
 } from 'react-native';
 import {   
     Colors,  
 } from 'react-native/Libraries/NewAppScreen';
 import moment from "moment";
 import Icon from 'react-native-vector-icons/Feather';
-
+import Modal from "react-native-modal";
 import ContentComponent from "./../components/ContentComponent";
 
 
@@ -25,14 +27,16 @@ export default class StockDisplayScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,              
+            isLoading: true,   
+            isModalVisible: false           
         };
     }//constructor
+
+
    updateList = (sortBy) => {
 
       this.setState({ sortBy: sortBy })
-
-     var sorted = this.state.dataSource.slice(0);
+      var sorted = this.state.dataSource.slice(0);
 
         if(sortBy=='High'){
             console.log("sortBy High===== ",sortBy);
@@ -60,9 +64,9 @@ export default class StockDisplayScreen extends React.Component {
             });          
         }
 
-    this.setState({ 
-        dataSource: sorted
-    })  
+        this.setState({ 
+            dataSource: sorted
+        })  
 
     }//update list 
 
@@ -83,12 +87,13 @@ export default class StockDisplayScreen extends React.Component {
         const { navigation } = this.props;
         const fromDate=navigation.getParam('fromDate', 'NO-DATE');
         const toDate=navigation.getParam('toDate', 'NO-DATE');
-        const stock = {
+        let stock = {
             high: item.high,
             low: item.low,
             open: item.open,
             close: item.close,
-            date:item.date
+            date:item.date,
+            comment:"",
         }
        
          const fromDate2 = moment(fromDate,"DD/MM/YYYY");
@@ -99,20 +104,18 @@ export default class StockDisplayScreen extends React.Component {
         
        if(date2 >= fromDate2 && date2 <= toDate2){       
          return (
-             //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT) >  {date2} 
-             //style={styles.list} 
-            <TouchableOpacity>  
-                <ContentComponent {...stock}  />
-            </TouchableOpacity>
+             //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT) >  {date2}  
+                <ContentComponent {...stock}  />            
+
          )    
         }
 
-
+        
     }
 
     componentWillMount() {
 
-        for(var i=1;i<=5; i++) {
+        for(var i=1;i<=1; i++) {
             let uri="https://jsonmock.hackerrank.com/api/stocks?page="+i;
                 fetch(uri)
                 .then((response) => response.json())
@@ -200,7 +203,8 @@ export default class StockDisplayScreen extends React.Component {
                     <FlatList
                         data={this.state.dataSource}
                         renderItem={this.renderItem}
-                        keyExtractor={({ id }, key) => id}
+                        //keyExtractor={({ id }, key) => id}
+                        keyExtractor={(item, index) => index.toString()}
                         //ItemSeparatorComponent={this.renderSeparator}
                     />
                 </View>                
@@ -250,6 +254,17 @@ const styles = StyleSheet.create({
     borderRightWidth:0.5,
     //borderLeftColor:'grey',
     //borderLeftWidth:0.5
+    },
+    inputBox: {
+      //width: 300,
+      backgroundColor: "white",
+      borderRadius: 5,
+      paddingHorizontal: 16,
+      fontSize: 16,
+      color: "black",
+      marginVertical: 3,
+      borderColor: "grey",
+      borderWidth: 0.5
     }
   
 });

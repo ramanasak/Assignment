@@ -12,7 +12,7 @@ import {
     TouchableOpacity,
     ToastAndroid,
     Image,
-    Dimensions
+    Dimensions,TextInput
 } from 'react-native';
 import {
     Header,
@@ -23,16 +23,30 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import moment from "moment";
 import Icon from 'react-native-vector-icons/Feather';
-
+import Modal from "react-native-modal";
 
 export default class ContentComponent extends React.Component {
-
+    constructor(props) {
+        super(props);
+        this.state = { 
+            isModalVisible: false,
+            commented: false,
+            commentText:"",          
+        };
+    }//constructor
+    toggleModal = () => {
+        this.setState({ isModalVisible: !this.state.isModalVisible });
+        //console.log("toggle",this.state.commentText);
+      };
+ 
+      
     render() {
        
+
         return (
-       
-        <View style={{ color: "white",flex:1, textAlign: 'center',backgroundColor: Colors.lighter }}>
-            <View style={{ backgroundColor:'white' ,flex:7 , flexDirection:'row'}}>
+  <TouchableOpacity onPress={this.toggleModal}>  
+ <View style={{ color: "white",flex:1, textAlign: 'center',backgroundColor: Colors.lighter }}>
+    <View style={{ backgroundColor:'white' ,flex:7 , flexDirection:'row'}}>
             <View style={styles.dateColumn}>
                 <Text style={{ color: "#3399ff", fontSize: 10, textAlign: 'center',
                 marginBottom: 5, marginTop: 5 }}>
@@ -61,15 +75,37 @@ export default class ContentComponent extends React.Component {
             <View style={styles.dataColumn}>
                 <Text style={{ color: "green", fontSize: 10, textAlign: 'center',
                 marginBottom: 5, marginTop: 5 }}>
+                {/* {this.state.commentText} */}
                 <Icon name={this.props.close > this.props.open ? 'trending-up' : 'trending-down'} 
-                size={20} color={this.props.close > this.props.open  ? '#1DA664' : '#DE5347'}
-                /> 
-                {/* arrow-up-right arrow-down-right */}
+                size={18} color={this.props.close > this.props.open  ? '#1DA664' : '#DE5347'}
+                />  <Icon style={{marginLeft:5}} name={this.state.commentText !=""  ? 'message-circle' : ''} 
+                size={12} color={this.props.close > this.props.open  ? '#1DA664' : '#DE5347'}
+                />
                 </Text>
             </View>
 
     </View>
-</View>
+
+
+              <Modal isVisible={this.state.isModalVisible}>
+                    <View style={{ flex: 1 }}>                       
+                        <TextInput
+                        style={styles.inputBox}
+                        placeholderTextColor="green"
+                        //placeholder="Enter Comments"
+                        autoCorrect={true}
+                        returnKeyType="go"
+                        ref={input => (this.commentText = input)}
+                        onChangeText={commentText => this.setState({ commentText })}
+                        />
+                        
+                        <Button title="submit" onPress={this.toggleModal} />
+                    </View>
+                </Modal>
+
+
+    </View>
+</TouchableOpacity>
         );
       }
 
@@ -118,5 +154,16 @@ const styles = StyleSheet.create({
     //borderRightWidth:0.5,
     //borderLeftColor:'grey',
     //borderLeftWidth:0.5
+    },
+    inputBox: {
+      //width: 300,
+      backgroundColor: "white",
+      borderRadius: 5,
+      paddingHorizontal: 16,
+      fontSize: 16,
+      color: "black",
+      marginVertical: 3,
+      borderColor: "grey",
+      borderWidth: 0.5
     }
 });

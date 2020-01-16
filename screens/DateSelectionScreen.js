@@ -15,7 +15,8 @@ export default class MyDatePicker extends Component {
     super(props)
     this.state = {
         fromDate:"01-01-2000",
-        toDate:"17-01-2021",    
+        toDate:"17-01-2021", 
+        isModalVisible: false   
   }
 }
 

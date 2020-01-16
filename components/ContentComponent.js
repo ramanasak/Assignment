@@ -48,32 +48,32 @@ export default class ContentComponent extends React.Component {
     <View style={{ backgroundColor:'white' ,flex:7 , flexDirection:'row'}}>
             <View style={styles.dateColumn}>
                 <Text style={{ color: "#3399ff", fontSize: 10, textAlign: 'center',
-                marginBottom: 5, marginTop: 5 }}>
+                marginBottom: 7, marginTop: 7 }}>
                 {this.props.date}</Text>
             </View>
             <View style={styles.dataColumn}>
                 <Text style={{ color: "#3399ff", fontSize: 10, textAlign: 'center',
-                marginBottom: 5, marginTop: 5 }}>
+                marginBottom: 7, marginTop: 7 }}>
                 {this.props.open}</Text>
             </View>
             <View style={styles.dataColumn}>
                 <Text style={{ color: "#3399ff", fontSize: 10, textAlign: 'center',
-                marginBottom: 5, marginTop: 5 }}>
+                marginBottom: 7, marginTop: 7 }}>
                 {this.props.close}</Text>
             </View>
             <View style={styles.dataColumn}>
                 <Text style={{ color: "#3399ff", fontSize: 10, textAlign: 'center',
-                marginBottom: 5, marginTop: 5 }}>
+                marginBottom: 7, marginTop: 7 }}>
                 {this.props.high}</Text>
             </View>
             <View style={styles.dataColumn}>
                 <Text style={{ color: "#3399ff", fontSize: 10, textAlign: 'center',
-                marginBottom: 5, marginTop: 5 }}>
+                marginBottom: 7, marginTop: 7 }}>
                 {this.props.low}</Text>
             </View>
             <View style={styles.dataColumn}>
                 <Text style={{ color: "green", fontSize: 10, textAlign: 'center',
-                marginBottom: 5, marginTop: 5 }}>
+                marginBottom: 7, marginTop: 7 }}>
                 {/* {this.state.commentText} */}
                 <Icon name={this.props.close > this.props.open ? 'trending-up' : 'trending-down'} 
                 size={18} color={this.props.close > this.props.open  ? '#1DA664' : '#DE5347'}
@@ -92,7 +92,7 @@ export default class ContentComponent extends React.Component {
                         style={styles.inputBox}
                         placeholderTextColor="green"
                         //placeholder="Enter Comments"
-                        placeholder={this.state.commentText}                    
+                        //placeholder={this.state.commentText}                    
                         autoCorrect={true}
                         returnKeyType="go"
                         ref={input => (this.commentText = input)}

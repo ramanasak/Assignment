@@ -105,23 +105,90 @@ export default class StockDisplayScreen extends React.Component {
        if(date2 >= fromDate2 && date2 <= toDate2){       
          return (
              //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT) >  {date2}  
-                <ContentComponent {...stock}  />            
-
+                <ContentComponent {...stock}  /> 
          )    
-        }
-
-        
+        }        
     }
 
-    componentWillMount() {
+    // var numbers = [65, 44, 12, 4];
+    // numbers.forEach(myFunction)
+    
+    // function myFunction(item, index, arr) {
+    //   arr[index] = item * 10;
+    // }
 
-        for(var i=1;i<=5; i++) {
+
+    componentWillMount() {
+        let Data=[];
+        // async function fetchAsync (uri) {
+        //     await  fetch(uri)
+        //      .then((response) => response.json())
+        //      .then((responseJson) => {
+        //             // console.log("Data === ",Data)
+        //          //Data=Data+JSON.stringify(responseJson.data);
+        //          //Data=Data+responseJson.data;
+        //          //console.log("responseJson.data=",responseJson.data[0]);
+        //          //console.log("responseJson.data=",responseJson.data.length);
+        //          //console.log("responseJson.data page=",responseJson.page);
+        //          //console.log("uri=",uri);
+        //          //console.log("i=",i);
+
+        //          //console.log("Data append=== ",Data)
+        //          for(var k=0;k<responseJson.data.length;k++){
+        //              Data.push(responseJson.data[k]); 
+        //          }
+        //          //console.log("Data.length=",Data.length);
+        //          console.log("Data.length=",Data.length);
+        //          this.setState({
+        //              //dataSource: responseJson.data,
+        //              //dataSource: JSON.parse(Data),
+        //              dataSource: Data,                     
+        //              isLoading: false,                      
+        //          });                    
+        //      }).catch((error) => {
+        //          console.log(error)
+        //      })
+        //     console.log("ggggggggggggggggg",this.state.dataSource);
+        // }//fetch async
+
+
+
+
+     
+        for(var i=1;i<6; i++) {
             let uri="https://jsonmock.hackerrank.com/api/stocks?page="+i;
+
+            //fetchAsync(uri);
+
+                    // this.setState({
+                    //      //dataSource: responseJson.data,
+                    //      //dataSource: JSON.parse(Data),
+                    //      dataSource: Data,                     
+                    //      isLoading: false,                      
+                    //  })
+
                 fetch(uri)
                 .then((response) => response.json())
                 .then((responseJson) => {
+                   // console.log("Data === ",Data)
+                    //Data=Data+JSON.stringify(responseJson.data);
+                    //Data=Data+responseJson.data;
+                    //console.log("responseJson.data=",responseJson.data[0]);
+                    //console.log("responseJson.data=",responseJson.data.length);
+                    //console.log("responseJson.data page=",responseJson.page);
+                    //console.log("uri=",uri);
+                    //console.log("i=",i);
+
+                    //console.log("Data append=== ",Data)
+                    for(var k=0;k<responseJson.data.length;k++){
+                        Data.push(responseJson.data[k]); 
+                    }
+                    //console.log("Data.length=",Data.length);
+                    console.log("Data.length=",Data.lengths);
                     this.setState({
-                        dataSource: responseJson.data,                     
+                        //dataSource: responseJson.data,
+                        //dataSource: JSON.parse(Data),
+                        dataSource: Data,                     
                         isLoading: false,                      
                     }, function () { }
                     );                    
@@ -130,7 +197,7 @@ export default class StockDisplayScreen extends React.Component {
                 })
         } 
         
-
+        console.log("fetchAsync=");
     }//compo
 
 

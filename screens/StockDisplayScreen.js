@@ -115,7 +115,7 @@ export default class StockDisplayScreen extends React.Component {
 
     componentWillMount() {
 
-        for(var i=1;i<=1; i++) {
+        for(var i=1;i<=5; i++) {
             let uri="https://jsonmock.hackerrank.com/api/stocks?page="+i;
                 fetch(uri)
                 .then((response) => response.json())

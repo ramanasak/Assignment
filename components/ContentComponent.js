@@ -41,7 +41,6 @@ export default class ContentComponent extends React.Component {
  
       
     render() {
-       
 
         return (
   <TouchableOpacity onPress={this.toggleModal}>  
@@ -93,6 +92,7 @@ export default class ContentComponent extends React.Component {
                         style={styles.inputBox}
                         placeholderTextColor="green"
                         //placeholder="Enter Comments"
+                        placeholder={this.state.commentText}                    
                         autoCorrect={true}
                         returnKeyType="go"
                         ref={input => (this.commentText = input)}

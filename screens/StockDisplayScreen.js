@@ -42,19 +42,18 @@ export default class StockDisplayScreen extends React.Component {
             });
         }
         else if (sortBy == 'Low') {
-            console.log("sortBy Low===== ", sortBy);
             sorted.sort(function (a, b) {
-                return a.high - b.high;
+                return a.low - b.low;
             });
         }
         else if (sortBy == 'Open') {
             sorted.sort(function (a, b) {
-                return a.high - b.high;
+                return a.open - b.open;
             });
         }
         else if (sortBy == 'Close') {
             sorted.sort(function (a, b) {
-                return a.high - b.high;
+                return b.close - a.close;
             });
         }
 

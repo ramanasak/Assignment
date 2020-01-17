@@ -34,7 +34,7 @@ export default class MyDatePicker extends Component {
         <Text style={{ marginTop: 10, color: 'green' }}>From Date</Text>
         <DatePicker
           style={{ width: 250, marginTop: 10 }}
-          date={this.state.fromDate} //initial date from state
+          //date={this.state.fromDate} //initial date from state
           mode="date"
           format="DD-MM-YYYY"
           confirmBtnText="Confirm"
@@ -60,7 +60,8 @@ export default class MyDatePicker extends Component {
         <Text style={{ marginTop: 10, color: 'green' }}>To Date</Text>
         <DatePicker
           style={{ width: 250, marginTop: 10, borderColor: 'black' }}
-          date={this.state.toDate} //,borderWidth:1,borderColor:'white'
+          //date={this.state.toDate} //,borderWidth:1,borderColor:'white'
+          placeholder="Select your birthday"
           mode="date" //
           format="DD-MM-YYYY"
           confirmBtnText="Confirm"

@@ -14,18 +14,11 @@ export default class MyDatePicker extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // fromDate: "01-01-2000",
-      // toDate: "17-01-2020",
-      fromDate: "",
-      toDate: "",
-      //isModalVisible: false
+      fromDate: "01-01-2000",
+      toDate: "17-01-2020",
     }
   }
-  // toggleModal = () => {
-  //   console.log("toggle");
-  //   this.setState({ isModalVisible: !this.state.isModalVisible });
-  //   console.log("toggle", this.state.isModalVisible);
-  // };
+
 
   render() {
 
@@ -34,7 +27,8 @@ export default class MyDatePicker extends Component {
         <Text style={{ marginTop: 10, color: 'green' }}>From Date</Text>
         <DatePicker
           style={{ width: 250, marginTop: 10 }}
-          //date={this.state.fromDate} //initial date from state
+          //placeholder="Select From Date"
+          date={this.state.fromDate} //initial date from state
           mode="date"
           format="DD-MM-YYYY"
           confirmBtnText="Confirm"
@@ -50,7 +44,7 @@ export default class MyDatePicker extends Component {
               marginLeft: 36
             },
             placeholderText: {
-              fontSize: 18,
+              fontSize: 14,
               color: 'black'
             }
 
@@ -60,8 +54,8 @@ export default class MyDatePicker extends Component {
         <Text style={{ marginTop: 10, color: 'green' }}>To Date</Text>
         <DatePicker
           style={{ width: 250, marginTop: 10, borderColor: 'black' }}
-          //date={this.state.toDate} //,borderWidth:1,borderColor:'white'
-          placeholder="Select your birthday"
+          date={this.state.toDate} //,borderWidth:1,borderColor:'white'
+          //placeholder="Select To Date"
           mode="date" //
           format="DD-MM-YYYY"
           confirmBtnText="Confirm"
@@ -78,9 +72,9 @@ export default class MyDatePicker extends Component {
               color: 'white'
             },
             placeholderText: {
-              fontSize: 18,
-              color: 'white',
-              textColor: 'white'
+              fontSize: 14,
+              color: 'black',
+              textColor: 'black'
             }
           }}
 

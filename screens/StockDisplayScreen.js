@@ -31,28 +31,28 @@ export default class StockDisplayScreen extends React.Component {
 
     }//constructor
 
-    updateList = (sortBy) => {
+     updateList = async(sortBy) => {
 
         this.setState({ sortBy: sortBy })
         var sorted = this.state.dataSource.slice(0);
 
         if (sortBy == 'High') {
-            sorted.sort(function (a, b) {
+            await sorted.sort(function (a, b) {
                 return b.high - a.high;
             });
         }
         else if (sortBy == 'Low') {
-            sorted.sort(function (a, b) {
+            await sorted.sort(function (a, b) {
                 return a.low - b.low;
             });
         }
         else if (sortBy == 'Open') {
-            sorted.sort(function (a, b) {
-                return a.open - b.open;
+            await sorted.sort(function (a, b) {
+                return b.open - a.open;
             });
         }
         else if (sortBy == 'Close') {
-            sorted.sort(function (a, b) {
+            await sorted.sort(function (a, b) {
                 return b.close - a.close;
             });
         }
@@ -87,19 +87,9 @@ export default class StockDisplayScreen extends React.Component {
             comment: "",
         }
 
-        // const fromDate2 = moment(fromDate, "DD/MM/YYYY");
-        // const toDate2 = moment(toDate, "DD/MM/YYYY");
-        // const momentC = moment(item.date).format("DD/MM/YYYY");
-        // const date2 = moment(momentC, "DD/MM/YYYY");
-        // console.log("fromDate2===", fromDate2)
-        // console.log("this.fromDate===", fromDate)
-        // if (date2 >= fromDate2 && date2 <= toDate2) {
-        return (
-            //         //onPress={() => ToastAndroid.show(item.date, ToastAndroid.SHORT) >  {date2}  
-            < ContentComponent {...stock} />
-        )
-        // }
 
+        return ( < ContentComponent {...stock} /> )
+        
     }
 
 
@@ -175,7 +165,8 @@ export default class StockDisplayScreen extends React.Component {
 
                 <View style={{ alignItems: 'flex-end', backgroundColor: '#3399ff' }}>
 
-                    <Picker style={{ height: 50, width: 200, color: 'white' }} selectedValue={this.state.sortBy} onValueChange={this.updateList}>
+                    <Picker style={{ height: 50, width: 200, color: 'white' }} 
+                    selectedValue={this.state.sortBy} onValueChange={this.updateList}>
                         <Picker.Item label="Sort by Highest" value="High" />
                         <Picker.Item label="Sort by Lowest" value="Low" />
                         <Picker.Item label="Sort by Open" value="Open" />
@@ -242,7 +233,7 @@ export default class StockDisplayScreen extends React.Component {
                         renderItem={this.renderItem}
                         //keyExtractor={({ id }, key) => id}
                         keyExtractor={(item, index) => index.toString()}
-                    //ItemSeparatorComponent={this.renderSeparator}
+                        //ItemSeparatorComponent={this.renderSeparator}
                     />
                 </View>
             </ScrollView>

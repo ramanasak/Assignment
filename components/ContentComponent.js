@@ -103,9 +103,7 @@ export default class ContentComponent extends React.Component {
                         <View style={{ flex: 1 }}>
                             <TextInput
                                 style={styles.inputBox}
-                                placeholderTextColor="green"
-                                //placeholder="Enter Comments"
-                                //placeholder={this.state.commentText}                    
+                                placeholderTextColor="green"             
                                 autoCorrect={true}
                                 returnKeyType="go"
                                 ref={input => (this.commentText = input)}

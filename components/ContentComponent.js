@@ -21,7 +21,6 @@ export default class ContentComponent extends React.Component {
         super(props);
         this.state = {
             isModalVisible: false,
-            commented: false,
             commentText: "",
         };
     }//constructor

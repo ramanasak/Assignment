@@ -14,8 +14,10 @@ export default class MyDatePicker extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fromDate: "01-01-2000",
-      toDate: "17-01-2020",
+      // fromDate: "01-01-2000",
+      // toDate: "17-01-2020",
+      fromDate: "",
+      toDate: "",
       //isModalVisible: false
     }
   }
@@ -32,9 +34,8 @@ export default class MyDatePicker extends Component {
         <Text style={{ marginTop: 10, color: 'green' }}>From Date</Text>
         <DatePicker
           style={{ width: 250, marginTop: 10 }}
-          //fromDate={this.state.fromDate}
           date={this.state.fromDate} //initial date from state
-          mode="date" //The enum of date, datetime and time
+          mode="date"
           format="DD-MM-YYYY"
           confirmBtnText="Confirm"
           cancelBtnText="Cancel"

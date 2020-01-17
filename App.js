@@ -14,31 +14,31 @@ export default class App extends React.Component {
     return <AppContainer />;
   }
 }
-  class Welcome extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Date Picker </Text>
-        <Button
-          title="Date"
-          onPress={() => this.props.navigation.navigate("StocksDisplay")}
-        />
-      </View>
-    );
-  }
-}
-class Display extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-      </View>
-    );
-  }
-}
+// class Welcome extends React.Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>Date Picker </Text>
+//         <Button
+//           title="Date"
+//           onPress={() => this.props.navigation.navigate("StocksDisplay")}
+//         />
+//       </View>
+//     );
+//   }
+// }
+// class Display extends React.Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>Home Screen</Text>
+//       </View>
+//     );
+//   }
+// }
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: DateSelectionScreen,    
+    screen: DateSelectionScreen,
   },
   Stocks: {
     screen: StockDisplayScreen,

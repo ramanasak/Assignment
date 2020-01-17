@@ -1,33 +1,37 @@
 
 import React, { Component } from 'react';
 
-import {View, StyleSheet,Alert,Button,Text} from 'react-native';
+import { View, StyleSheet, Alert, Button, Text } from 'react-native';
 
 import DatePicker from 'react-native-datepicker';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
- 
+
 export default class MyDatePicker extends Component {
   static navigationOptions = {
-      header: null
+    headerShown: false
   }
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-        fromDate:"01-01-2000",
-        toDate:"17-01-2021", 
-        isModalVisible: false   
+      fromDate: "01-01-2000",
+      toDate: "17-01-2020",
+      //isModalVisible: false
+    }
   }
-}
+  // toggleModal = () => {
+  //   console.log("toggle");
+  //   this.setState({ isModalVisible: !this.state.isModalVisible });
+  //   console.log("toggle", this.state.isModalVisible);
+  // };
 
-
-  render(){
+  render() {
 
     return (
       <View style={styles.container}>
-        <Text style={{marginTop:10,color:'green'}}>From Date</Text>
+        <Text style={{ marginTop: 10, color: 'green' }}>From Date</Text>
         <DatePicker
-          style={{width: 250 ,marginTop:10 }}
+          style={{ width: 250, marginTop: 10 }}
           //fromDate={this.state.fromDate}
           date={this.state.fromDate} //initial date from state
           mode="date" //The enum of date, datetime and time
@@ -45,16 +49,16 @@ export default class MyDatePicker extends Component {
               marginLeft: 36
             },
             placeholderText: {
-                fontSize: 18,
-                color: 'black'
+              fontSize: 18,
+              color: 'black'
             }
 
           }}
-          onDateChange={(date) => {this.setState({fromDate: date})}}
+          onDateChange={(date) => { this.setState({ fromDate: date }) }}
         />
-        <Text style={{marginTop:10,color:'green'}}>To Date</Text>
+        <Text style={{ marginTop: 10, color: 'green' }}>To Date</Text>
         <DatePicker
-          style={{width: 250,marginTop:10 ,borderColor:'black'}}
+          style={{ width: 250, marginTop: 10, borderColor: 'black' }}
           date={this.state.toDate} //,borderWidth:1,borderColor:'white'
           mode="date" //
           format="DD-MM-YYYY"
@@ -69,56 +73,56 @@ export default class MyDatePicker extends Component {
             },
             dateInput: {
               marginLeft: 36,
-              color:'white'
+              color: 'white'
             },
             placeholderText: {
-                fontSize: 18,
-                color: 'white',
-                textColor:'white'
+              fontSize: 18,
+              color: 'white',
+              textColor: 'white'
             }
           }}
 
-          onDateChange={(date) => {this.setState({toDate: date})}}       
+          onDateChange={(date) => { this.setState({ toDate: date }) }}
         />
 
         <TouchableHighlight
-            style={{
-              backgroundColor: '#019031',
-              width: 200,
-              paddingVertical: 8,
-              marginVertical: 10,
-              borderRadius: 20,
-              borderColor: "white",
-              borderWidth: 1,
-              marginTop:25,
-            }}
-          >
-            <View>
-              <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate("Stocks",{
+          style={{
+            backgroundColor: '#019031',
+            width: 200,
+            paddingVertical: 8,
+            marginVertical: 10,
+            borderRadius: 20,
+            borderColor: "white",
+            borderWidth: 1,
+            marginTop: 25,
+          }}
+        >
+          <View>
+            <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate("Stocks", {
               fromDate: this.state.fromDate,
               toDate: this.state.toDate,
             })}>
-                Submit 
+              Submit
             </Text>
-            </View>
-          </TouchableHighlight>
+          </View>
+        </TouchableHighlight>
       </View>
 
     )
   }
 }
 
-const styles = StyleSheet.create ({
- container: {
+const styles = StyleSheet.create({
+  container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent:'center',
+    justifyContent: 'center',
     //marginTop: 50,
-    padding:16,
-    backgroundColor:"white",
+    padding: 16,
+    backgroundColor: "white",
     //backgroundColor:'#3399ff',
     //backgroundColor:'#47a3ff',
- },buttonText: {
+  }, buttonText: {
     fontSize: 16,
     fontWeight: "500",
     color: "white",
